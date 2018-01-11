@@ -13,13 +13,13 @@ import com.glennon.inventory.model.Beer;
 import com.glennon.inventory.service.BeerService;
 
 @RestController
-@RequestMapping("/beers")
+@RequestMapping("/")
 public class BeerController {
 
 	@Autowired
 	private BeerService beerService;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "beers", method = RequestMethod.GET)
 	public Collection<Beer> getAllBeers() {
 
 		return beerService.getAllBeers();
