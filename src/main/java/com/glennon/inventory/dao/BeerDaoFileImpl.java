@@ -112,6 +112,9 @@ public class BeerDaoFileImpl implements BeerDao {
 
 		String brewery = (String) beerObject.get("brewery");
 		currentBeer.setBrewery(brewery);
+		
+		String location = (String) beerObject.get("location");
+		currentBeer.setLocation(location);
 
 		beers.put(currentBeer.getId(), currentBeer);
 
@@ -141,6 +144,7 @@ public class BeerDaoFileImpl implements BeerDao {
 			beerDetails.put("quantity", currentBeer.getQuantity());
 			beerDetails.put("bottleDate", currentBeer.getBottleDate());
 			beerDetails.put("brewery", currentBeer.getBrewery());
+			beerDetails.put("location", currentBeer.getLocation());
 
 			beerObject.put("beer", beerDetails);
 
@@ -163,6 +167,7 @@ public class BeerDaoFileImpl implements BeerDao {
 			newBeerDetails.put("quantity", beer.getQuantity());
 			newBeerDetails.put("bottleDate", beer.getBottleDate());
 			newBeerDetails.put("brewery", beer.getBrewery());
+			newBeerDetails.put("location", beer.getLocation());
 
 			newBeerObject.put("beer", newBeerDetails);
 			beerList.add(newBeerObject);

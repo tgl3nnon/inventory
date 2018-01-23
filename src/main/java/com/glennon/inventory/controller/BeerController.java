@@ -24,32 +24,29 @@ public class BeerController {
 
 		return beerService.getAllBeers();
 	}
-	
+
 	@RequestMapping(value = "getBeer", method = RequestMethod.GET)
-	public Beer getBeer(@RequestBody Beer beer) {	
+	public Beer getBeer(@RequestBody Beer beer) {
 
 		return beerService.getBeer(beer);
 	}
 
 	@RequestMapping(value = "addBeer", method = RequestMethod.POST)
-	public Beer addBeerToInventory(@RequestBody Beer beer) {	
+	public Beer addBeerToInventory(@RequestBody Beer beer) {
 
 		return beerService.addBeerToInventory(beer);
-	}
-	;
+	};
+
 	@RequestMapping(value = "removeBeer", method = RequestMethod.DELETE)
-	public Beer removeBeerToInventory(@RequestBody Beer beer) {	
+	public Beer removeBeerToInventory(@RequestBody Beer beer) {
 
 		return beerService.removeBeerFromInventory(beer);
 	}
-	
+
 	@RequestMapping(value = "updateBeer", method = RequestMethod.POST)
-	public Beer updateBeerToInventory(@RequestBody Beer beer) {	
+	public Beer updateBeerToInventory(@RequestBody Beer beer) {
 
 		return beerService.updateBeerInInventory(beer);
 	}
-	
-	
-	
 
 }
