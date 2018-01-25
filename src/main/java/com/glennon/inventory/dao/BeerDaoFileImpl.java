@@ -40,7 +40,6 @@ public class BeerDaoFileImpl implements BeerDao {
 
 	@Override
 	public Beer addBeerToInventory(Beer beer) {
-		// updateInventory(beer);
 		loadInventory();
 		beer.setId(nextBeerId + 1);
 		beers.put(beer.getId(), beer);
@@ -50,79 +49,19 @@ public class BeerDaoFileImpl implements BeerDao {
 
 	@Override
 	public Beer removeBeerFromInventory(Beer beer) {
-		beers.remove(beer.getId());
-		beer.setId(0);
-		updateInventory(beer);
 		loadInventory();
+		beers.remove(beer.getId());
+		writeToInventory();
 		return beer;
 	}
 
 	@Override
 	public Beer updateBeerInInventory(Beer beer) {
-
 		beers.put(beer.getId(), beer);
 		updateInventory(beer);
 		loadInventory();
 
 		return beer;
-	}
-
-	@SuppressWarnings("unchecked")
-	private void loadInventory() {
-
-		JSONParser jsonParser = new JSONParser();
-
-		try (FileReader reader = new FileReader(inventoryFile)) {
-
-			Object obj = jsonParser.parse(reader);
-
-			JSONArray beerList = (JSONArray) obj;
-
-			beerList.forEach(beer -> parseBeerInInventory((JSONObject) beer));
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void parseBeerInInventory(JSONObject beer) {
-		JSONObject beerObject = (JSONObject) beer.get("beer");
-		Beer currentBeer = new Beer();
-
-		Long beerId = (Long) beerObject.get("id");
-		currentBeer.setId(beerId.intValue());
-
-		String beerName = (String) beerObject.get("name");
-		currentBeer.setName(beerName);
-
-		String beerStyle = (String) beerObject.get("style");
-		currentBeer.setStyle(beerStyle);
-
-		Long beerVolume = (Long) beerObject.get("vol");
-		currentBeer.setVol(beerVolume.intValue());
-
-		Long beerQuantity = (Long) beerObject.get("quantity");
-		currentBeer.setQuantity(beerQuantity.intValue());
-
-		Long bottleDate = (Long) beerObject.get("bottleDate");
-		currentBeer.setBottleDate(bottleDate.intValue());
-
-		String brewery = (String) beerObject.get("brewery");
-		currentBeer.setBrewery(brewery);
-
-		String location = (String) beerObject.get("location");
-		currentBeer.setLocation(location);
-
-		if (currentBeer.getId() > nextBeerId) {
-			nextBeerId = currentBeer.getId();
-		}
-
-		beers.put(currentBeer.getId(), currentBeer);
-
 	}
 
 	@SuppressWarnings("unchecked") // suppresses warnings of beerDetails Object
@@ -188,6 +127,64 @@ public class BeerDaoFileImpl implements BeerDao {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	@SuppressWarnings("unchecked")
+	private void loadInventory() {
+
+		JSONParser jsonParser = new JSONParser();
+
+		try (FileReader reader = new FileReader(inventoryFile)) {
+
+			Object obj = jsonParser.parse(reader);
+
+			JSONArray beerList = (JSONArray) obj;
+
+			beerList.forEach(beer -> parseBeerInInventory((JSONObject) beer));
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void parseBeerInInventory(JSONObject beer) {
+		JSONObject beerObject = (JSONObject) beer.get("beer");
+		Beer currentBeer = new Beer();
+
+		Long beerId = (Long) beerObject.get("id");
+		currentBeer.setId(beerId.intValue());
+
+		String beerName = (String) beerObject.get("name");
+		currentBeer.setName(beerName);
+
+		String beerStyle = (String) beerObject.get("style");
+		currentBeer.setStyle(beerStyle);
+
+		Long beerVolume = (Long) beerObject.get("vol");
+		currentBeer.setVol(beerVolume.intValue());
+
+		Long beerQuantity = (Long) beerObject.get("quantity");
+		currentBeer.setQuantity(beerQuantity.intValue());
+
+		Long bottleDate = (Long) beerObject.get("bottleDate");
+		currentBeer.setBottleDate(bottleDate.intValue());
+
+		String brewery = (String) beerObject.get("brewery");
+		currentBeer.setBrewery(brewery);
+
+		String location = (String) beerObject.get("location");
+		currentBeer.setLocation(location);
+
+		if (currentBeer.getId() > nextBeerId) {
+			nextBeerId = currentBeer.getId();
+		}
+
+		beers.put(currentBeer.getId(), currentBeer);
 
 	}
 
