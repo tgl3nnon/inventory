@@ -24,13 +24,14 @@ public class BeerDaoFileImpl implements BeerDao {
 
 	private static Map<Integer, Beer> beers = new HashMap<>();
 	private String inventoryFile = "C:/Temp/inventory.json";
+	int nextBeerId = 0;
 
 	@Override
 	public Collection<Beer> getAllBeers() {
 		loadInventory();
 		return beers.values();
 	}
-	
+
 	@Override
 	public Beer getBeer(Beer beer) {
 		loadInventory();
@@ -39,12 +40,12 @@ public class BeerDaoFileImpl implements BeerDao {
 
 	@Override
 	public Beer addBeerToInventory(Beer beer) {
-
-		updateInventory(beer);
+		// updateInventory(beer);
 		loadInventory();
-
+		beer.setId(nextBeerId + 1);
+		beers.put(beer.getId(), beer);
+		writeToInventory();
 		return beer;
-
 	}
 
 	@Override
@@ -112,9 +113,13 @@ public class BeerDaoFileImpl implements BeerDao {
 
 		String brewery = (String) beerObject.get("brewery");
 		currentBeer.setBrewery(brewery);
-		
+
 		String location = (String) beerObject.get("location");
 		currentBeer.setLocation(location);
+
+		if (currentBeer.getId() > nextBeerId) {
+			nextBeerId = currentBeer.getId();
+		}
 
 		beers.put(currentBeer.getId(), currentBeer);
 
@@ -123,11 +128,11 @@ public class BeerDaoFileImpl implements BeerDao {
 	@SuppressWarnings("unchecked") // suppresses warnings of beerDetails Object
 	private void updateInventory(Beer beer) {
 
-		int nextBeerId = 0;
+		// int nextBeerId = 0;
 		boolean idSet = false;
 		JSONArray beerList = new JSONArray();
 
-		if (beer.getId() > 0) {
+		if (beer.getId() >= 0) {
 			idSet = true;
 		}
 
@@ -150,13 +155,14 @@ public class BeerDaoFileImpl implements BeerDao {
 
 			beerList.add(beerObject);
 
-			if (nextBeerId <= currentBeer.getId()) {
-				nextBeerId = currentBeer.getId();
-			}
+			/*
+			 * if (nextBeerId <= currentBeer.getId()) { nextBeerId = currentBeer.getId(); }
+			 */
 
 		}
 
-		if (beer.getId() != 0 || idSet == true) {
+		/* if (beer.getId() != 0 || idSet == true) { */
+		if (idSet == true) {
 
 			JSONObject newBeerObject = new JSONObject();
 			JSONObject newBeerDetails = new JSONObject();
@@ -185,6 +191,38 @@ public class BeerDaoFileImpl implements BeerDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
+	private void writeToInventory() {
 
+		JSONArray beerList = new JSONArray();
 
+		for (Beer currentBeer : beers.values()) {
+			JSONObject beerDetails = new JSONObject();
+			JSONObject beerObject = new JSONObject();
+
+			beerDetails.put("id", currentBeer.getId());
+			beerDetails.put("name", currentBeer.getName());
+			beerDetails.put("style", currentBeer.getStyle());
+			beerDetails.put("vol", currentBeer.getVol());
+			beerDetails.put("quantity", currentBeer.getQuantity());
+			beerDetails.put("bottleDate", currentBeer.getBottleDate());
+			beerDetails.put("brewery", currentBeer.getBrewery());
+			beerDetails.put("location", currentBeer.getLocation());
+
+			beerObject.put("beer", beerDetails);
+
+			beerList.add(beerObject);
+
+			try (FileWriter file = new FileWriter(inventoryFile)) {
+
+				file.write(beerList.toJSONString());
+				file.flush();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
 }
