@@ -25,7 +25,7 @@ public class BeerController {
 		return beerService.getAllBeers();
 	}
 
-	@RequestMapping(value = "getBeer", method = RequestMethod.GET)
+	@RequestMapping(value = "getBeer", method = RequestMethod.POST)
 	public Beer getBeer(@RequestBody Beer beer) {
 
 		return beerService.getBeer(beer);

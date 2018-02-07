@@ -21,7 +21,6 @@ function loadInventory() {
 				var volume = beer.volume;
 				var quantity = beer.quantity;
 				
-
 				var beer = '<tr>';
 				beer += '<td>' + beerName + '</td>';
 				beer += '<td>' + breweryName + '</td>';

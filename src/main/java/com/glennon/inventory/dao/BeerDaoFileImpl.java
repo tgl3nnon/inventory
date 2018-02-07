@@ -67,7 +67,6 @@ public class BeerDaoFileImpl implements BeerDao {
 	@SuppressWarnings("unchecked") // suppresses warnings of beerDetails Object
 	private void updateInventory(Beer beer) {
 
-		// int nextBeerId = 0;
 		boolean idSet = false;
 		JSONArray beerList = new JSONArray();
 
@@ -94,13 +93,8 @@ public class BeerDaoFileImpl implements BeerDao {
 
 			beerList.add(beerObject);
 
-			/*
-			 * if (nextBeerId <= currentBeer.getId()) { nextBeerId = currentBeer.getId(); }
-			 */
-
 		}
 
-		/* if (beer.getId() != 0 || idSet == true) { */
 		if (idSet == true) {
 
 			JSONObject newBeerObject = new JSONObject();
