@@ -18,7 +18,7 @@ function loadInventory() {
 				var breweryName = beer.brewery;
 				var style = beer.style;
 				var bottleDate = beer.bottleDate;
-				var volume = beer.volume;
+				var volume = beer.vol;
 				var quantity = beer.quantity;
 				
 				var beer = '<tr>';
