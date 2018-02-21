@@ -11,7 +11,7 @@ function loadInventory() {
 
 	$.ajax({
 		type : 'GET',
-		url : 'http://localhost:8080/beers',
+		url : '/beers',
 		success : function(data, status) {
 			$.each(data, function(index, beer) {
 				var beerName = beer.name;
