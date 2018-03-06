@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	hideAllNavBarLinks();
 	loadInventory();
 
 })
@@ -20,7 +20,7 @@ function loadInventory() {
 				var bottleDate = beer.bottleDate;
 				var volume = beer.vol;
 				var quantity = beer.quantity;
-				
+
 				var beer = '<tr>';
 				beer += '<td>' + beerName + '</td>';
 				beer += '<td>' + breweryName + '</td>';
@@ -38,3 +38,39 @@ function loadInventory() {
 		}
 	});
 }
+
+function hideAllNavBarLinks() {
+	$("#addBeer").hide();
+	$("#updateBeer").hide();
+	$("#deleteBeer").hide();
+}
+
+$("#takeMeHome").on("click", function() {
+	hideAllNavBarLinks();
+	loadInventory();
+	$("#mainPage").show();
+});
+
+$("#addBeerLink").on("click", function() {
+	$("#addBeer").show();
+	$("#deleteBeer").hide();
+	$("#updateBeer").hide();
+	$("#mainPage").hide();
+	$("#searchForm").hide();
+});
+
+$("#updateBeerLink").on("click", function() {
+	$("#updateBeer").show();
+	$("#addBeer").hide();
+	$("#deleteBeer").hide();
+	$("#mainPage").hide();
+	$("#searchForm").hide();
+});
+
+$("#deleteBeerLink").on("click", function() {
+	$("#deleteBeer").show();
+	$("#updateBeer").hide();
+	$("#addBeer").hide();
+	$("#mainPage").hide();
+	$("#searchForm").hide();
+});
