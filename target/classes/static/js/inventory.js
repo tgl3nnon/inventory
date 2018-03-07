@@ -43,13 +43,14 @@ function hideAllNavBarLinks() {
 	$("#addBeer").hide();
 	$("#updateBeer").hide();
 	$("#deleteBeer").hide();
+	$("#search").hide();
 }
 
 $("#takeMeHome").on("click", function() {
 	hideAllNavBarLinks();
 	loadInventory();
 	$("#mainPage").show();
-	$("#searchForm").show();
+	$("#search").hide();
 });
 
 $("#addBeerLink").on("click", function() {
@@ -57,7 +58,7 @@ $("#addBeerLink").on("click", function() {
 	$("#deleteBeer").hide();
 	$("#updateBeer").hide();
 	$("#mainPage").hide();
-	$("#searchForm").hide();
+	$("#search").hide();
 });
 
 $("#updateBeerLink").on("click", function() {
@@ -65,7 +66,7 @@ $("#updateBeerLink").on("click", function() {
 	$("#addBeer").hide();
 	$("#deleteBeer").hide();
 	$("#mainPage").hide();
-	$("#searchForm").hide();
+	$("#search").hide();
 });
 
 $("#deleteBeerLink").on("click", function() {
@@ -73,5 +74,13 @@ $("#deleteBeerLink").on("click", function() {
 	$("#updateBeer").hide();
 	$("#addBeer").hide();
 	$("#mainPage").hide();
-	$("#searchForm").hide();
+	$("#search").hide();
+});
+
+$("#searchLink").on("click", function() {
+	$("#mainPage").hide();
+	$("#addBeer").hide();
+	$("#deleteBeer").hide();
+	$("#mainPage").hide();
+	$("#search").show();
 });
