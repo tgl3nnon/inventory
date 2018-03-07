@@ -31,6 +31,9 @@ function loadInventory() {
 				beer += '</tr>';
 				cellarListing.append(beer);
 			});
+			$("#cellarListing").DataTable({
+				'pageLength':10
+			});
 
 		},
 		error : function() {
