@@ -49,6 +49,7 @@ $("#takeMeHome").on("click", function() {
 	hideAllNavBarLinks();
 	loadInventory();
 	$("#mainPage").show();
+	$("#searchForm").show();
 });
 
 $("#addBeerLink").on("click", function() {
