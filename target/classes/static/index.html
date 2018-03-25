@@ -63,24 +63,50 @@
 				<label for="add-beer-name">
 					Name:
 				</label>
-				<input type="text">
+				<input type="text" class="form-control" id="add-beer-name" placeholder="Beer Name" required>
 			</div>
 			<div class="form-group">
 				<label for="add-brewery-name">
 					Brewery:
 				</label>
-				<input type="text">
+				<input type="text" class="form-control" id="add-brewery-name" placeholder="Brewery Name" required>
 			</div>
 			<div class="form-group">
 				<label for="select-style-name">
 					Style:
 				</label>
-				<input type="text">
+				<input type="text" class="form-control" id="select-style-name" placeholder="Style" required>
+			</div>
+			<div class="form-group">
+				<label for="add-bottle-date">
+					Bottle Date:
+				</label>
+				<input type="text" class="form-control" id="add-bottle-date" placeholder "Bottle Year">
+			</div>
+			<div class="form-group">
+				<label for="add-volume">
+					Volume:
+				</label>
+				<select class="form-control" id="add-volume">
+					<option>12</option>
+					<option>16</option>
+					<option>22</option>
+					<option>375</option>
+					<option>750</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="add-quantity">
+					Quantity:
+				</label>
+				<input type="text" id="add-quantity">
+			</div>
+			<div class="form-group">
+				<button type="button" id="add-beer" class="btn btn-primary btn-sm">
+					Add Beer
+				</button>
 			</div>
 		</form>
-
-
-	</div>
 	</div>
 	<!-- add beer container -->
 

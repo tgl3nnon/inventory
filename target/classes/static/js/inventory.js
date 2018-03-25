@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 	hideAllNavBarLinks();
 	loadInventory();
 
@@ -9,10 +9,10 @@ function loadInventory() {
 	var cellarListing = $('#cellarListing');
 
 	$.ajax({
-		type: 'GET',
-		url: '/beers',
-		success: function (data, status) {
-			$.each(data, function (index, beer) {
+		type : 'GET',
+		url : '/beers',
+		success : function(data, status) {
+			$.each(data, function(index, beer) {
 				var beerName = beer.name;
 				var breweryName = beer.brewery;
 				var style = beer.style;
@@ -31,18 +31,45 @@ function loadInventory() {
 				cellarListing.append(beer);
 			});
 			$('#cellarListing').DataTable({
-				'pageLength': 10
+				'pageLength' : 10
 			});
 
 		},
-		error: function () {
+		error : function() {
 
 		}
 	});
 }
 
 function addBeerToInventory() {
+	$('#add-beer').click(function(event) {
+		$.ajax({
+			type : 'POST',
+			url : '/addBeer',
+			data : JSON.stringify({
+				name : $('#add-beer-name').val(),
+				brewery : $('#add-brewery-name').val(),
+				style : $('#select-style-name').val(),
+				bottleDate : $('#add-bottle-date').val(),
+				vol : $('#add-volume').val(),
+				quantity : $('#add-quantity').val(),
+			}),
+			headers : {
+				'Accept' : 'application/json',
+				'Content-Type' : 'application/json'
+			},
+			'dataType' : 'json',
+			success : function() {
+				showHome();
+				console.log('success');
+			},
 
+			error : function() {
+				console.log('error');
+			}
+
+		});
+	});
 }
 
 function hideAllNavBarLinks() {
@@ -56,22 +83,30 @@ function clearInventory() {
 	$('#cellarListing').empty();
 }
 
-$('#takeMeHome').on('click', function () {
+function showHome() {
+	hideAllNavBarLinks();
+	loadInventory();
+	$('#mainPage').show();
+	$('#search').hide();
+}
+
+$('#takeMeHome').on('click', function() {
 	hideAllNavBarLinks();
 	loadInventory();
 	$('#mainPage').show();
 	$('#search').hide();
 });
 
-$('#addBeerLink').on('click', function () {
+$('#addBeerLink').on('click', function() {
 	$('#addBeer').show();
 	$('#deleteBeer').hide();
 	$('#updateBeer').hide();
 	$('#mainPage').hide();
 	$('#search').hide();
+	addBeerToInventory();
 });
 
-$('#updateBeerLink').on('click', function () {
+$('#updateBeerLink').on('click', function() {
 	$('#updateBeer').show();
 	$('#addBeer').hide();
 	$('#deleteBeer').hide();
@@ -79,7 +114,7 @@ $('#updateBeerLink').on('click', function () {
 	$('#search').hide();
 });
 
-$('#deleteBeerLink').on('click', function () {
+$('#deleteBeerLink').on('click', function() {
 	$('#deleteBeer').show();
 	$('#updateBeer').hide();
 	$('#addBeer').hide();
@@ -87,7 +122,7 @@ $('#deleteBeerLink').on('click', function () {
 	$('#search').hide();
 });
 
-$('#searchLink').on('click', function () {
+$('#searchLink').on('click', function() {
 	$('#mainPage').hide();
 	$('#addBeer').hide();
 	$('#deleteBeer').hide();
