@@ -1,19 +1,18 @@
-$(document).ready(function() {
+$(document).ready(function () {
 	hideAllNavBarLinks();
 	loadInventory();
 
 })
 
 function loadInventory() {
-	// set up clear inventory
-
+	clearInventory();
 	var cellarListing = $('#cellarListing');
 
 	$.ajax({
-		type : 'GET',
-		url : '/beers',
-		success : function(data, status) {
-			$.each(data, function(index, beer) {
+		type: 'GET',
+		url: '/beers',
+		success: function (data, status) {
+			$.each(data, function (index, beer) {
 				var beerName = beer.name;
 				var breweryName = beer.brewery;
 				var style = beer.style;
@@ -31,59 +30,67 @@ function loadInventory() {
 				beer += '</tr>';
 				cellarListing.append(beer);
 			});
-			$("#cellarListing").DataTable({
-				'pageLength':10
+			$('#cellarListing').DataTable({
+				'pageLength': 10
 			});
 
 		},
-		error : function() {
+		error: function () {
 
 		}
 	});
 }
 
-function hideAllNavBarLinks() {
-	$("#addBeer").hide();
-	$("#updateBeer").hide();
-	$("#deleteBeer").hide();
-	$("#search").hide();
+function addBeerToInventory() {
+
 }
 
-$("#takeMeHome").on("click", function() {
+function hideAllNavBarLinks() {
+	$('#addBeer').hide();
+	$('#updateBeer').hide();
+	$('#deleteBeer').hide();
+	$('#search').hide();
+}
+
+function clearInventory() {
+	$('#cellarListing').empty();
+}
+
+$('#takeMeHome').on('click', function () {
 	hideAllNavBarLinks();
 	loadInventory();
-	$("#mainPage").show();
-	$("#search").hide();
+	$('#mainPage').show();
+	$('#search').hide();
 });
 
-$("#addBeerLink").on("click", function() {
-	$("#addBeer").show();
-	$("#deleteBeer").hide();
-	$("#updateBeer").hide();
-	$("#mainPage").hide();
-	$("#search").hide();
+$('#addBeerLink').on('click', function () {
+	$('#addBeer').show();
+	$('#deleteBeer').hide();
+	$('#updateBeer').hide();
+	$('#mainPage').hide();
+	$('#search').hide();
 });
 
-$("#updateBeerLink").on("click", function() {
-	$("#updateBeer").show();
-	$("#addBeer").hide();
-	$("#deleteBeer").hide();
-	$("#mainPage").hide();
-	$("#search").hide();
+$('#updateBeerLink').on('click', function () {
+	$('#updateBeer').show();
+	$('#addBeer').hide();
+	$('#deleteBeer').hide();
+	$('#mainPage').hide();
+	$('#search').hide();
 });
 
-$("#deleteBeerLink").on("click", function() {
-	$("#deleteBeer").show();
-	$("#updateBeer").hide();
-	$("#addBeer").hide();
-	$("#mainPage").hide();
-	$("#search").hide();
+$('#deleteBeerLink').on('click', function () {
+	$('#deleteBeer').show();
+	$('#updateBeer').hide();
+	$('#addBeer').hide();
+	$('#mainPage').hide();
+	$('#search').hide();
 });
 
-$("#searchLink").on("click", function() {
-	$("#mainPage").hide();
-	$("#addBeer").hide();
-	$("#deleteBeer").hide();
-	$("#mainPage").hide();
-	$("#search").show();
+$('#searchLink').on('click', function () {
+	$('#mainPage').hide();
+	$('#addBeer').hide();
+	$('#deleteBeer').hide();
+	$('#mainPage').hide();
+	$('#search').show();
 });
