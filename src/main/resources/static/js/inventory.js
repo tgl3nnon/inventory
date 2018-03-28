@@ -18,7 +18,6 @@ $(document).ready(function () {
 					var volume = beer.vol;
 					var quantity = beer.quantity;
 					var id = beer.id;
-					//var beerLink = 'http://localhost:8080/getBeer/' + beer;
 
 					var beer = '<div class="row" id="beer-button' + id + '">';
 					beer += '<div class="col" id="beer-name">' + beerName + '</div>';
@@ -29,6 +28,17 @@ $(document).ready(function () {
 					beer += '<div class="col" id="beer-quantity">' + quantity + '</div>';
 					beer += '</div>';
 					cellarListing.append(beer);
+
+					$('#beer-button' + id).on('click', function () {
+						hideSelectedBeer();
+						$('#selectedBeer').fadeIn("slow");
+						$('#selectedBeerName').append('Beer Name:' + beerName);
+						$('#selectedBeerBrewery').append('Brewery Name: ' + breweryName);
+						$('#selectedBeerStyle').append('Style: ' + style);
+						$('#selectedBeerDate').append('Botle Date: ' + bottleDate);
+						$('#selectedBeerVolume').append('Volume: ' + volume);
+						$('#selectedBeerQuantity').append('Quantity: ' + quantity);
+					});
 
 				});
 
@@ -96,6 +106,8 @@ $(document).ready(function () {
 		$('#updateBeer').hide();
 		$('#deleteBeer').hide();
 		$('#search').hide();
+		hideSelectedBeer();
+
 	}
 
 	function clearInventory() {
@@ -114,6 +126,7 @@ $(document).ready(function () {
 		loadInventory();
 		$('#mainPage').show();
 		$('#search').hide();
+		hideSelectedBeer();
 	});
 
 	$('#addBeerLink').on('click', function () {
@@ -123,6 +136,7 @@ $(document).ready(function () {
 		$('#mainPage').hide();
 		$('#search').hide();
 		addBeerToInventory();
+		hideSelectedBeer();
 	});
 
 	$('#updateBeerLink').on('click', function () {
@@ -131,6 +145,7 @@ $(document).ready(function () {
 		$('#deleteBeer').hide();
 		$('#mainPage').hide();
 		$('#search').hide();
+		hideSelectedBeer();
 	});
 
 	$('#deleteBeerLink').on('click', function () {
@@ -139,14 +154,27 @@ $(document).ready(function () {
 		$('#addBeer').hide();
 		$('#mainPage').hide();
 		$('#search').hide();
+		hideSelectedBeer();
 	});
 
 	$('#searchLink').on('click', function () {
 		$('#mainPage').hide();
 		$('#addBeer').hide();
 		$('#deleteBeer').hide();
-		$('#mainPage').hide();
+		$('#updateBeer').hide();
 		$('#search').show();
+		hideSelectedBeer();
 	});
+
+	function hideSelectedBeer() {
+		$('#selectedBeer').hide();
+		$('#selectedBeerName').empty();
+		$('#selectedBeerBrewery').empty();
+		$('#selectedBeerStyle').empty();
+		$('#selectedBeerDate').empty();
+		$('#selectedBeerVolume').empty();
+		$('#selectedBeerQuantity').empty();
+	};
+
 
 })
