@@ -23,7 +23,8 @@ import com.glennon.inventory.model.Beer;
 public class BeerDaoFileImpl implements BeerDao {
 
 	private static Map<Integer, Beer> beers = new HashMap<>();
-	private String inventoryFile = "D:/inventory/json/inventory.json";
+	//private String inventoryFile = "D:/inventory/json/inventory.json";
+	private String inventoryFile = "C:/temp/inventory.json";
 	int nextBeerId = 0;
 
 	@Override

@@ -1,12 +1,10 @@
 $(document).ready(function () {
 	hideAllNavBarLinks();
 	loadInventory();
-	var selectedBeer;
 
 	function loadInventory() {
 		clearInventory();
 		var cellarListing = $('#cellarListing');
-		//var cellarInventory=$('#mainInventory');
 
 		$.ajax({
 			type: 'GET',
@@ -19,27 +17,19 @@ $(document).ready(function () {
 					var bottleDate = beer.bottleDate;
 					var volume = beer.vol;
 					var quantity = beer.quantity;
+					var id = beer.id;
+					//var beerLink = 'http://localhost:8080/getBeer/' + beer;
 
-					// var beer = '<div class="row" class="col-sm-8">';
-					// beer += beerName;
-					// beer += breweryName;
-					// beer += style;
-					// beer += bottleDate;
-					// beer += volume;
-					// beer += quantity;
-					// beer+='</div>';
-					// cellarInventory.append(beer);
-
-					var beer = '<tr id="beer-button' + beer.id + '">';
-					beer += '<td>' + beerName + '</td>';
-					beer += '<td>' + breweryName + '</td>';
-					beer += '<td>' + style + '</td>';
-					beer += '<td>' + bottleDate + '</td>';
-					beer += '<td>' + volume + '</td>';
-					beer += '<td>' + quantity + '</td>';
-					//beer += '<button type = "button" id="add-beer" class="btn btn-primary btn-sm"> DRINK ME </button>';
-					beer += '</tr>';
+					var beer = '<div class="row" id="beer-button' + id + '">';
+					beer += '<div class="col" id="beer-name">' + beerName + '</div>';
+					beer += '<div class="col" id="brewery-name">' + breweryName + '</div>';
+					beer += '<div class="col" id="beer-style">' + style + '</div>';
+					beer += '<div class="col" id="beer-bottle-date">' + bottleDate + '</div>';
+					beer += '<div class="col" id="beer-volume">' + volume + '</div>';
+					beer += '<div class="col" id="beer-quantity">' + quantity + '</div>';
+					beer += '</div>';
 					cellarListing.append(beer);
+
 				});
 
 			},
@@ -80,9 +70,26 @@ $(document).ready(function () {
 		});
 	}
 
+	// function getBeer(beer) {
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		url: '/getBeer',
+	// 		data: JSON.stringify(beer),
+	// 		headers: {
+	// 			'Accept': 'application/json',
+	// 			'Content-Type': 'application/json'
+	// 		},
+	// 		'dataType': 'json',
+	// 		success: function () {
+	// 			console.log('success');
+	// 		},
 
+	// 		error: function () {
+	// 			console.log('error');
+	// 		}
 
-
+	// 	});
+	// }
 
 	function hideAllNavBarLinks() {
 		$('#addBeer').hide();
@@ -101,11 +108,6 @@ $(document).ready(function () {
 		$('#mainPage').show();
 		$('#search').hide();
 	}
-
-	// $('#beer-button').on('click', function () {
-	// 	alert('You clicked me');
-	//https://www.experts-exchange.com/questions/28306994/Table-row-click-event-within-jquery-dialog-is-not-working.html
-	// });
 
 	$('#takeMeHome').on('click', function () {
 		hideAllNavBarLinks();

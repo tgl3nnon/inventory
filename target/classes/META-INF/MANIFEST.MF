@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: inventory
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: tglennon
+Built-By: n0206644
 Implementation-Vendor-Id: com.glennon
-Build-Jdk: 1.8.0_121
+Build-Jdk: 1.8.0_161
 Implementation-URL: http://maven.apache.org
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
