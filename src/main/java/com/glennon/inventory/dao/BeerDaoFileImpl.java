@@ -13,6 +13,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
@@ -22,14 +24,17 @@ import com.glennon.inventory.model.Beer;
 @Qualifier("fileData")
 public class BeerDaoFileImpl implements BeerDao {
 
+	private static final Logger logger = LoggerFactory.getLogger(BeerDaoFileImpl.class);
+
 	private static Map<Integer, Beer> beers = new HashMap<>();
-	//private String inventoryFile = "D:/inventory/json/inventory.json";
-	private String inventoryFile = "C:/temp/inventory.json";
+	private String inventoryFile = "D:/inventory/json/inventory.json";
+	// private String inventoryFile = "C:/temp/inventory.json";
 	int nextBeerId = 0;
 
 	@Override
 	public Collection<Beer> getAllBeers() {
 		loadInventory();
+		logger.info("==> Inventory loaded " + beers.size() + " <==");
 		return beers.values();
 	}
 
@@ -45,6 +50,7 @@ public class BeerDaoFileImpl implements BeerDao {
 		beer.setId(nextBeerId + 1);
 		beers.put(beer.getId(), beer);
 		writeToInventory();
+		logger.info("==> Beer added to inventory " + beer.getName() + beer.getStyle() + beer.getId() + " <==");
 		return beer;
 	}
 
@@ -53,6 +59,7 @@ public class BeerDaoFileImpl implements BeerDao {
 		loadInventory();
 		beers.remove(beer.getId());
 		writeToInventory();
+		logger.info("==> Beer removed from inventory " + beer.getName() + beer.getStyle() + beer.getId() + " <==");
 		return beer;
 	}
 
@@ -61,7 +68,7 @@ public class BeerDaoFileImpl implements BeerDao {
 		beers.put(beer.getId(), beer);
 		updateInventory(beer);
 		loadInventory();
-
+		logger.info("==> Beer updated in inventory " + beer.getName() + beer.getStyle() + beer.getId() + " <==");
 		return beer;
 	}
 
@@ -74,8 +81,6 @@ public class BeerDaoFileImpl implements BeerDao {
 		if (beer.getId() >= 0) {
 			idSet = true;
 		}
-
-		// https://howtodoinjava.com/json-simple/json-simple-read-write-json-examples/
 
 		for (Beer currentBeer : beers.values()) {
 			JSONObject beerDetails = new JSONObject();

@@ -18,7 +18,6 @@ $(document).ready(function () {
 					var volume = beer.vol;
 					var quantity = beer.quantity;
 					var id = beer.id;
-					//var beerLink = 'http://localhost:8080/getBeer/' + beer;
 
 					var beer = '<div class="row" id="beer-button' + id + '">';
 					beer += '<div class="col" id="beer-name">' + beerName + '</div>';
@@ -32,7 +31,7 @@ $(document).ready(function () {
 
 					$('#beer-button' + id).on('click', function () {
 						hideSelectedBeer();
-						$('#selectedBeer').fadeIn("slow");
+						$('#selectedBeer').fadeIn("300000");
 						$('#selectedBeerName').append('Beer Name:' + beerName);
 						$('#selectedBeerBrewery').append('Brewery Name: ' + breweryName);
 						$('#selectedBeerStyle').append('Style: ' + style);

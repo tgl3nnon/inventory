@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 					$('#beer-button' + id).on('click', function () {
 						hideSelectedBeer();
-						$('#selectedBeer').fadeIn("slow");
+						$('#selectedBeer').fadeIn("300000");
 						$('#selectedBeerName').append('Beer Name:' + beerName);
 						$('#selectedBeerBrewery').append('Brewery Name: ' + breweryName);
 						$('#selectedBeerStyle').append('Style: ' + style);

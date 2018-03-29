@@ -3,6 +3,8 @@ package com.glennon.inventory.controller;
 
 import java.util.Collection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,8 @@ import com.glennon.inventory.service.BeerService;
 @RestController
 @RequestMapping("/")
 public class BeerController {
+
+	private static final Logger logger = LoggerFactory.getLogger(BeerController.class);
 
 	@Autowired
 	private BeerService beerService;
@@ -33,15 +37,7 @@ public class BeerController {
 
 	@RequestMapping(value = "addBeer", method = RequestMethod.POST)
 	public Beer addBeerToInventory(@RequestBody Beer beer) {
-		System.out.println("************************");
-		System.out.println(beer.getName());
-		System.out.println(beer.getBrewery());
-		System.out.println(beer.getStyle());
-		System.out.println(beer.getBottleDate());
-		System.out.println(beer.getVol());
-		System.out.println(beer.getQuantity());
-		System.out.println(beer.getId());
-		System.out.println("************************");
+
 		return beerService.addBeerToInventory(beer);
 	};
 
