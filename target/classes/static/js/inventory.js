@@ -80,6 +80,10 @@ $(document).ready(function () {
 		});
 	}
 
+	function drinkABeer() {
+		
+	}
+
 
 	function hideAllNavBarLinks() {
 		$('#addBeer').hide();
