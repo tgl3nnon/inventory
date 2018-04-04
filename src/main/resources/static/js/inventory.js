@@ -80,26 +80,6 @@ $(document).ready(function () {
 		});
 	}
 
-	// function getBeer(beer) {
-	// 	$.ajax({
-	// 		type: 'POST',
-	// 		url: '/getBeer',
-	// 		data: JSON.stringify(beer),
-	// 		headers: {
-	// 			'Accept': 'application/json',
-	// 			'Content-Type': 'application/json'
-	// 		},
-	// 		'dataType': 'json',
-	// 		success: function () {
-	// 			console.log('success');
-	// 		},
-
-	// 		error: function () {
-	// 			console.log('error');
-	// 		}
-
-	// 	});
-	// }
 
 	function hideAllNavBarLinks() {
 		$('#addBeer').hide();
@@ -178,3 +158,24 @@ $(document).ready(function () {
 
 
 })
+
+	// function getBeer(beer) {
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		url: '/getBeer',
+	// 		data: JSON.stringify(beer),
+	// 		headers: {
+	// 			'Accept': 'application/json',
+	// 			'Content-Type': 'application/json'
+	// 		},
+	// 		'dataType': 'json',
+	// 		success: function () {
+	// 			console.log('success');
+	// 		},
+
+	// 		error: function () {
+	// 			console.log('error');
+	// 		}
+
+	// 	});
+	// }

@@ -46,29 +46,32 @@ public class BeerDaoFileImpl implements BeerDao {
 
 	@Override
 	public Beer addBeerToInventory(Beer beer) {
+		String addedBeer = beer.toString();
 		loadInventory();
 		beer.setId(nextBeerId + 1);
 		beers.put(beer.getId(), beer);
 		writeToInventory();
-		logger.info("==> Beer added to inventory " + beer.getName() + beer.getStyle() + beer.getId() + " <==");
+		logger.info("==> Beer added to inventory " + addedBeer + " <==");
 		return beer;
 	}
 
 	@Override
 	public Beer removeBeerFromInventory(Beer beer) {
+		String removeBeer = beer.toString();
 		loadInventory();
 		beers.remove(beer.getId());
 		writeToInventory();
-		logger.info("==> Beer removed from inventory " + beer.getName() + beer.getStyle() + beer.getId() + " <==");
+		logger.info("==> Beer removed from inventory " + removeBeer + " <==");
 		return beer;
 	}
 
 	@Override
 	public Beer updateBeerInInventory(Beer beer) {
+		String updatedBeer = beer.toString();
 		beers.put(beer.getId(), beer);
 		updateInventory(beer);
 		loadInventory();
-		logger.info("==> Beer updated in inventory " + beer.getName() + beer.getStyle() + beer.getId() + " <==");
+		logger.info("==> Beer updated in inventory " + updatedBeer + " <==");
 		return beer;
 	}
 
