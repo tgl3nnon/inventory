@@ -20,12 +20,12 @@ $(document).ready(function () {
 					var id = beer.id;
 
 					var beer = '<div class="row" id="beer-button' + id + '">';
-					beer += '<div class="col" id="beer-name">' + beerName + '</div>';
-					beer += '<div class="col" id="brewery-name">' + breweryName + '</div>';
-					beer += '<div class="col" id="beer-style">' + style + '</div>';
-					beer += '<div class="col" id="beer-bottle-date">' + bottleDate + '</div>';
-					beer += '<div class="col" id="beer-volume">' + volume + '</div>';
-					beer += '<div class="col" id="beer-quantity">' + quantity + '</div>';
+					beer += '<div class="col" id="beer-name">' + 'Name: ' + beerName + '</div>';
+					beer += '<div class="col" id="brewery-name">' + 'Brewery: ' + breweryName + '</div>';
+					beer += '<div class="col" id="beer-style">' + 'Style: ' + style + '</div>';
+					beer += '<div class="col" id="beer-bottle-date">' +"Bottle Date: " + bottleDate + '</div>';
+					beer += '<div class="col" id="beer-volume">' + 'Vol: ' + volume + '</div>';
+					beer += '<div class="col" id="beer-quantity">' + 'Quantity: ' + quantity + '</div>';
 					beer += '</div>';
 					cellarListing.append(beer);
 
