@@ -19,7 +19,8 @@ $(document).ready(function () {
 					var quantity = beer.quantity;
 					var id = beer.id;
 
-					var beer = '<div class="row" id="beer-button' + id + '">';
+					var beer = '<div>';
+					beer += '<div class="row" id="beer-button' + id + '">';
 					beer += '<div class="col" id="beer-name">' + 'Name: ' + beerName + '</div>';
 					beer += '<div class="col" id="brewery-name">' + 'Brewery: ' + breweryName + '</div>';
 					beer += '<div class="col" id="beer-style">' + 'Style: ' + style + '</div>';
@@ -27,19 +28,23 @@ $(document).ready(function () {
 					beer += '<div class="col" id="beer-bottle-date">' +"Bottle Date: " + bottleDate + '</div>';
 					beer += '<div class="col" id="beer-volume">' + 'Vol: ' + volume + '</div>';
 					beer += '<div class="col" id="beer-quantity">' + 'Quantity: ' + quantity + '</div>';
-					beer += '/div>';
+					beer += '</div>';
+					beer += '</div>';
 					beer += '</div>';
 					cellarListing.append(beer);
+					$("[id^=beer-details]").hide();
 
 					$('#beer-button' + id).on('click', function () {
-						hideSelectedBeer();
-						$('#selectedBeer').fadeIn("300000");
-						$('#selectedBeerName').append('Beer Name:' + beerName);
-						$('#selectedBeerBrewery').append('Brewery Name: ' + breweryName);
-						$('#selectedBeerStyle').append('Style: ' + style);
-						$('#selectedBeerDate').append('Botle Date: ' + bottleDate);
-						$('#selectedBeerVolume').append('Volume: ' + volume);
-						$('#selectedBeerQuantity').append('Quantity: ' + quantity);
+						$('#beer-details' + id).toggle();
+							// function(){$($this).fadeIn("300000")});
+						// hideSelectedBeer();
+						// $('#selectedBeer').fadeIn("300000");
+						// $('#selectedBeerName').append('Beer Name:' + beerName);
+						// $('#selectedBeerBrewery').append('Brewery Name: ' + breweryName);
+						// $('#selectedBeerStyle').append('Style: ' + style);
+						// $('#selectedBeerDate').append('Botle Date: ' + bottleDate);
+						// $('#selectedBeerVolume').append('Volume: ' + volume);
+						// $('#selectedBeerQuantity').append('Quantity: ' + quantity);
 					});
 
 				});
@@ -161,6 +166,10 @@ $(document).ready(function () {
 		$('#selectedBeerVolume').empty();
 		$('#selectedBeerQuantity').empty();
 	};
+
+	function hideBeerDetails() {
+		$('#selectedBeerDate')
+	}
 
 
 })
