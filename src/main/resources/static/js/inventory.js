@@ -23,9 +23,11 @@ $(document).ready(function () {
 					beer += '<div class="col" id="beer-name">' + 'Name: ' + beerName + '</div>';
 					beer += '<div class="col" id="brewery-name">' + 'Brewery: ' + breweryName + '</div>';
 					beer += '<div class="col" id="beer-style">' + 'Style: ' + style + '</div>';
+					beer += '<div class="row" id="beer-details' + id + '">';
 					beer += '<div class="col" id="beer-bottle-date">' +"Bottle Date: " + bottleDate + '</div>';
 					beer += '<div class="col" id="beer-volume">' + 'Vol: ' + volume + '</div>';
 					beer += '<div class="col" id="beer-quantity">' + 'Quantity: ' + quantity + '</div>';
+					beer += '/div>';
 					beer += '</div>';
 					cellarListing.append(beer);
 
