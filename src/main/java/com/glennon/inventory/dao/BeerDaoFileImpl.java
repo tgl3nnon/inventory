@@ -27,9 +27,9 @@ public class BeerDaoFileImpl implements BeerDao {
 	private static final Logger logger = LoggerFactory.getLogger(BeerDaoFileImpl.class);
 
 	private static Map<Integer, Beer> beers = new HashMap<>();
-	//private String inventoryFile = "D:/inventory/json/inventory.json";
+	private String inventoryFile = "D:/inventory/json/inventory.json";
 	// private String inventoryFile = "C:/temp/inventory.json";
-	private String inventoryFile = "/Volumes/Data/tglennon/inventory/json/inventory.json";
+	//private String inventoryFile = "/Volumes/Data/tglennon/inventory/json/inventory.json";
 	int nextBeerId = 0;
 
 	@Override
