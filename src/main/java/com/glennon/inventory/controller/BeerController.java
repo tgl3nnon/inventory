@@ -20,39 +20,39 @@ import com.glennon.inventory.service.BeerService;
 @RequestMapping("/")
 public class BeerController {
 
-	private static final Logger logger = LoggerFactory.getLogger(BeerController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BeerController.class);
 
-	@Autowired
-	private BeerService beerService;
+    @Autowired
+    private BeerService beerService;
 
-	@RequestMapping(value = "beers", method = RequestMethod.GET)
-	public Collection<Beer> getAllBeers() {
+    @RequestMapping(value = "beers", method = RequestMethod.GET)
+    public Collection<Beer> getAllBeers() {
 
-		return beerService.getAllBeers();
-	}
+        return beerService.getAllBeers();
+    }
 
-	@RequestMapping(value = "getBeer", method = RequestMethod.POST)
-	public Beer getBeer(@RequestBody Beer beer) {
+    @RequestMapping(value = "getBeer", method = RequestMethod.POST)
+    public Beer getBeer(@RequestBody Beer beer) {
 
-		return beerService.getBeer(beer);
-	}
+        return beerService.getBeer(beer);
+    }
 
-	@RequestMapping(value = "addBeer", method = RequestMethod.POST)
-	public Beer addBeerToInventory(@RequestBody Beer beer) {
+    @RequestMapping(value = "addBeer", method = RequestMethod.POST)
+    public Beer addBeerToInventory(@RequestBody Beer beer) {
 
-		return beerService.addBeerToInventory(beer);
-	};
+        return beerService.addBeerToInventory(beer);
+    }
 
-	@RequestMapping(value = "removeBeer", method = RequestMethod.DELETE)
-	public Beer removeBeerToInventory(@RequestBody Beer beer) {
+    @RequestMapping(value = "removeBeer", method = RequestMethod.DELETE)
+    public Beer removeBeerToInventory(@RequestBody Beer beer) {
 
-		return beerService.removeBeerFromInventory(beer);
-	}
+        return beerService.removeBeerFromInventory(beer);
+    }
 
-	@RequestMapping(value = "updateBeer", method = RequestMethod.POST)
-	public Beer updateBeerToInventory(@RequestBody Beer beer) {
+    @RequestMapping(value = "updateBeer", method = RequestMethod.POST)
+    public Beer updateBeerToInventory(@RequestBody Beer beer) {
 
-		return beerService.updateBeerInInventory(beer);
-	}
+        return beerService.updateBeerInInventory(beer);
+    }
 
 }

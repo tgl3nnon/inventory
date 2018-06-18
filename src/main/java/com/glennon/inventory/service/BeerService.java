@@ -13,33 +13,33 @@ import com.glennon.inventory.model.Beer;
 @Service
 public class BeerService {
 
-	@Autowired
-	@Qualifier("fileData")
-	private BeerDaoFileImpl beerDao;
+    @Autowired
+    @Qualifier("fileData")
+    private BeerDaoFileImpl beerDao;
 
-	public Collection<Beer> getAllBeers() {
+    public Collection<Beer> getAllBeers() {
 
-		return beerDao.getAllBeers();
-	}
+        return beerDao.getAllBeers();
+    }
 
-	public Beer getBeer(Beer beer) {
+    public Beer getBeer(Beer beer) {
 
-		return beerDao.getBeer(beer);
-	}
+        return beerDao.getBeer(beer);
+    }
 
-	public Beer addBeerToInventory(Beer beer) {
+    public Beer addBeerToInventory(Beer beer) {
 
-		return beerDao.addBeerToInventory(beer);
-	}
+        return beerDao.addBeerToInventory(beer);
+    }
 
-	public Beer removeBeerFromInventory(Beer beer) {
+    public Beer removeBeerFromInventory(Beer beer) {
 
-		return beerDao.removeBeerFromInventory(beer);
-	}
+        return beerDao.removeBeerFromInventory(beer);
+    }
 
-	public Beer updateBeerInInventory(Beer beer) {
+    public Beer updateBeerInInventory(Beer beer) {
 
-		return beerDao.updateBeerInInventory(beer);
-	}
+        return beerDao.updateBeerInInventory(beer);
+    }
 
 }

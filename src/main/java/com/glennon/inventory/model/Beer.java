@@ -22,7 +22,7 @@ public class Beer {
         this.name = name;
         this.style = style;
     }
-    
+
     public int getId() {
         return id;
     }
