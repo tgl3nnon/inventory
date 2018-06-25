@@ -1,45 +1,18 @@
-
 package com.glennon.inventory.service;
+
+import com.glennon.inventory.model.Beer;
 
 import java.util.Collection;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+public interface BeerService {
 
-import com.glennon.inventory.dao.BeerDaoFileImpl;
-import com.glennon.inventory.model.Beer;
+    public Collection<Beer> getAllBeers();
 
-@Service
-public class BeerService {
+    public Beer getBeer(Beer beer);
 
-    @Autowired
-    @Qualifier("fileData")
-    private BeerDaoFileImpl beerDao;
+    public Beer addBeerToInventory(Beer beer);
 
-    public Collection<Beer> getAllBeers() {
+    public Beer removeBeerFromInventory(Beer beer);
 
-        return beerDao.getAllBeers();
-    }
-
-    public Beer getBeer(Beer beer) {
-
-        return beerDao.getBeer(beer);
-    }
-
-    public Beer addBeerToInventory(Beer beer) {
-
-        return beerDao.addBeerToInventory(beer);
-    }
-
-    public Beer removeBeerFromInventory(Beer beer) {
-
-        return beerDao.removeBeerFromInventory(beer);
-    }
-
-    public Beer updateBeerInInventory(Beer beer) {
-
-        return beerDao.updateBeerInInventory(beer);
-    }
-
+    public Beer updateBeerInInventory(Beer beer);
 }
