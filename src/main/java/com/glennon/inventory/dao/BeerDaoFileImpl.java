@@ -9,12 +9,14 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.glennon.inventory.utility.InventoryUtility;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
@@ -24,11 +26,12 @@ import com.glennon.inventory.model.Beer;
 @Qualifier("fileData")
 public class BeerDaoFileImpl implements BeerDao {
 
+    @Autowired
+    private InventoryUtility inventoryUtility;
+
     private static final Logger logger = LoggerFactory.getLogger(BeerDaoFileImpl.class);
 
     private static Map<Integer, Beer> beers = new HashMap<>();
-    //private String inventoryFile = "D:/inventory/json/inventory.json";
-    // private String inventoryFile = "C:/temp/inventory.json";
     private static String inventoryFile = "/Users/n0206644/personal_projects/inventory/json/inventory.json";
     int nextBeerId = 0;
 
@@ -51,7 +54,7 @@ public class BeerDaoFileImpl implements BeerDao {
         loadInventory();
         beer.setId(nextBeerId + 1);
         beers.put(beer.getId(), beer);
-        writeToInventory();
+        inventoryUtility.writeToInventory();
         logger.info("==> Beer added to inventory " + addedBeer + " <==");
         return beer;
     }
@@ -61,7 +64,7 @@ public class BeerDaoFileImpl implements BeerDao {
         String removeBeer = beer.toString();
         loadInventory();
         beers.remove(beer.getId());
-        writeToInventory();
+        inventoryUtility.writeToInventory();
         logger.info("==> Beer removed from inventory " + removeBeer + " <==");
         return beer;
     }
@@ -192,38 +195,38 @@ public class BeerDaoFileImpl implements BeerDao {
 
     }
 
-    @SuppressWarnings("unchecked")
-    private void writeToInventory() {
+//    @SuppressWarnings("unchecked")
+//    private void writeToInventory() {
+//
+//        JSONArray beerList = new JSONArray();
+//
+//        for (Beer currentBeer : beers.values()) {
+//            JSONObject beerDetails = new JSONObject();
+//            JSONObject beerObject = new JSONObject();
+//
+//            beerDetails.put("id", currentBeer.getId());
+//            beerDetails.put("name", currentBeer.getName());
+//            beerDetails.put("style", currentBeer.getStyle());
+//            beerDetails.put("vol", currentBeer.getVol());
+//            beerDetails.put("quantity", currentBeer.getQuantity());
+//            beerDetails.put("bottleDate", currentBeer.getBottleDate());
+//            beerDetails.put("brewery", currentBeer.getBrewery());
+//            beerDetails.put("location", currentBeer.getLocation());
+//
+//            beerObject.put("beer", beerDetails);
+//
+//            beerList.add(beerObject);
+//
+//            try (FileWriter file = new FileWriter(inventoryFile)) {
+//
+//                file.write(beerList.toJSONString());
+//                file.flush();
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
 
-        JSONArray beerList = new JSONArray();
-
-        for (Beer currentBeer : beers.values()) {
-            JSONObject beerDetails = new JSONObject();
-            JSONObject beerObject = new JSONObject();
-
-            beerDetails.put("id", currentBeer.getId());
-            beerDetails.put("name", currentBeer.getName());
-            beerDetails.put("style", currentBeer.getStyle());
-            beerDetails.put("vol", currentBeer.getVol());
-            beerDetails.put("quantity", currentBeer.getQuantity());
-            beerDetails.put("bottleDate", currentBeer.getBottleDate());
-            beerDetails.put("brewery", currentBeer.getBrewery());
-            beerDetails.put("location", currentBeer.getLocation());
-
-            beerObject.put("beer", beerDetails);
-
-            beerList.add(beerObject);
-
-            try (FileWriter file = new FileWriter(inventoryFile)) {
-
-                file.write(beerList.toJSONString());
-                file.flush();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-    }
+ //   }
 }
