@@ -1,9 +1,9 @@
 
 package com.glennon.inventory.dao;
 
-import java.util.Collection;
-
 import com.glennon.inventory.model.Beer;
+
+import java.util.Collection;
 
 public interface BeerDao {
 
