@@ -2,6 +2,7 @@ package com.glennon.inventory.model;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +17,9 @@ import java.util.Date;
 
 @Data
 @Entity
+@EqualsAndHashCode(callSuper = false)
 @Table(name = "BEER")
-public class Beer {
+public abstract class Beer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

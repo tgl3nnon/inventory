@@ -11,10 +11,10 @@ public interface BeerDao {
 
     Beer addBeerToInventory(Beer beer);
 
-    Beer removeBeerFromInventory(Beer beer);
+    void removeBeerFromInventory(Integer beerId);
 
     Beer updateBeerInInventory(Beer beer);
 
-    Beer getBeer(Beer beer);
+    Beer getBeer(Integer beerId);
 
 }
