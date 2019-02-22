@@ -1,4 +1,4 @@
-package com.glennon.inventory.service;
+package com.glennon.inventory.service.beer;
 
 import com.glennon.inventory.model.Beer;
 
@@ -12,7 +12,7 @@ public interface BeerService {
 
     public Beer addBeerToInventory(Beer beer);
 
-    public Beer removeBeerFromInventory(Beer beer);
+    public void removeBeerFromInventory(Beer beer);
 
     public Beer updateBeerInInventory(Beer beer);
 }

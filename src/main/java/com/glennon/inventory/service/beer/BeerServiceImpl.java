@@ -1,5 +1,5 @@
 
-package com.glennon.inventory.service;
+package com.glennon.inventory.service.beer;
 
 import com.glennon.inventory.dao.beer.BeerDao;
 import com.glennon.inventory.model.Beer;
@@ -23,7 +23,7 @@ public class BeerServiceImpl implements BeerService {
 
     public Beer getBeer(Beer beer) {
 
-        return beerDao.getBeer(beer);
+        return beerDao.getBeer(beer.getId());
     }
 
     public Beer addBeerToInventory(Beer beer) {
@@ -31,9 +31,9 @@ public class BeerServiceImpl implements BeerService {
         return beerDao.addBeerToInventory(beer);
     }
 
-    public Beer removeBeerFromInventory(Beer beer) {
+    public void removeBeerFromInventory(Beer beer) {
 
-        return beerDao.removeBeerFromInventory(beer);
+        beerDao.removeBeerFromInventory(beer.getId());
     }
 
     public Beer updateBeerInInventory(Beer beer) {
