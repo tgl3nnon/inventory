@@ -17,11 +17,10 @@ public class Brewery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "BREWERY_ID", unique = true, nullable = false)
+    @Column(name = "BREWERY_ID")
     private Integer breweryId;
 
-    @Column(name = "BREWERY_NAME", unique = true, nullable = false)
-    @NotNull
+    @Column(name = "BREWERY_NAME")
     private String breweryName;
 
 }

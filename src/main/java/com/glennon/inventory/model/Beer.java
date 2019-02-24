@@ -23,35 +23,29 @@ public abstract class Beer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "BEER_ID", unique = true, nullable = false)
+    @Column(name = "BEER_ID")
     private Integer id;
 
-    @Column(name = "BEER_NAME", unique = true, nullable = false)
-    @NotNull
+    @Column(name = "BEER_NAME")
     private String name;
 
-    @Column(name = "STYLE", unique = true, nullable = false)
-    @NotNull
+    @Column(name = "STYLE")
     private String style;
 
-    @Column(name = "VOLUME", unique = true, nullable = false)
-    @NotNull
+    @Column(name = "VOLUME")
     private Integer volume;
 
-    @Column(name = "QUANTITY", unique = true, nullable = false)
-    @NotNull
+    @Column(name = "QUANTITY")
     private Integer quantity;
 
-    @Column(name = "BOTTLE_DATE", unique = true, nullable = false)
-    @NotNull
+    @Column(name = "BOTTLE_DATE")
     private Date bottleDate;
 
     @ManyToOne
-    @JoinColumn(name = "BREWERY_ID", referencedColumnName = "BREWERY_ID", nullable = false)
-    @NotNull
+    @JoinColumn(name = "BREWERY_ID")
     private Brewery brewery;
 
-    @Column(name = "LOCATION", unique = true, nullable = false)
+    @Column(name = "LOCATION")
     private String location;
 
 }
