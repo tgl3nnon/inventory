@@ -17,9 +17,8 @@ import java.util.Date;
 
 @Data
 @Entity
-@EqualsAndHashCode(callSuper = false)
 @Table(name = "BEER")
-public abstract class Beer {
+public class Beer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
