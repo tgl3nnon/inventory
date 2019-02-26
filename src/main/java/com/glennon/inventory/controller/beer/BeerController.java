@@ -5,13 +5,14 @@ import com.glennon.inventory.model.Beer;
 import com.glennon.inventory.service.beer.BeerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/")
+@RequestMapping(path = "/beers", produces = MediaType.APPLICATION_JSON_VALUE)
 public class BeerController {
 
     private static final Logger logger = LoggerFactory.getLogger(BeerController.class);
@@ -22,17 +23,16 @@ public class BeerController {
         this.beerService = beerService;
     }
 
-    @GetMapping(value = "beers")
+    @GetMapping
     public Collection<Beer> getAllBeers() {
         return beerService.getAllBeers();
     }
-//
-//    @RequestMapping(value = "getBeer", method = RequestMethod.POST)
-//    public Beer getBeer(@RequestBody Beer beer) {
-//
-//        return beerServiceImpl.getBeer(beer);
-//    }
-//
+
+    @GetMapping(value = "{beerId}")
+    public Beer getBeer(@PathVariable Integer beerId) {
+        return beerService.getBeer(beerId);
+    }
+
 //    @RequestMapping(value = "addBeer", method = RequestMethod.POST)
 //    public Beer addBeerToInventory(@RequestBody Beer beer) {
 //

@@ -8,7 +8,7 @@ public interface BeerService {
 
     public Collection<Beer> getAllBeers();
 
-    public Beer getBeer(Beer beer);
+    public Beer getBeer(Integer beerId);
 
     public Beer addBeerToInventory(Beer beer);
 

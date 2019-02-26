@@ -1,6 +1,8 @@
 package com.glennon.inventory.model;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -18,6 +20,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "BEER")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Beer {
 
     @Id
@@ -26,25 +29,31 @@ public class Beer {
     private Integer id;
 
     @Column(name = "BEER_NAME")
+    @NotNull
     private String name;
 
     @Column(name = "STYLE")
+    @NotNull
     private String style;
 
     @Column(name = "VOLUME")
+    @NotNull
     private Integer volume;
 
     @Column(name = "QUANTITY")
+    @NotNull
     private Integer quantity;
 
     @Column(name = "BOTTLE_DATE")
+    @NotNull
     private Date bottleDate;
+
+    @Column(name = "LOCATION")
+    @NotNull
+    private String location;
 
     @ManyToOne
     @JoinColumn(name = "BREWERY_ID")
     private Brewery brewery;
-
-    @Column(name = "LOCATION")
-    private String location;
 
 }

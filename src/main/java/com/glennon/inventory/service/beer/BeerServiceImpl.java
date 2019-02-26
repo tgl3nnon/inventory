@@ -21,9 +21,9 @@ public class BeerServiceImpl implements BeerService {
         return beerDao.getAllBeers();
     }
 
-    public Beer getBeer(Beer beer) {
+    public Beer getBeer(Integer beerId) {
 
-        return beerDao.getBeer(beer.getId());
+        return beerDao.getBeer(beerId);
     }
 
     public Beer addBeerToInventory(Beer beer) {
