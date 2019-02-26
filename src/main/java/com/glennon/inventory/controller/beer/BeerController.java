@@ -29,26 +29,24 @@ public class BeerController {
     }
 
     @GetMapping(value = "{beerId}")
-    public Beer getBeer(@PathVariable Integer beerId) {
+    public Beer get(@PathVariable Integer beerId) {
         return beerService.getBeer(beerId);
     }
 
-//    @RequestMapping(value = "addBeer", method = RequestMethod.POST)
-//    public Beer addBeerToInventory(@RequestBody Beer beer) {
-//
-//        return beerServiceImpl.addBeerToInventory(beer);
-//    }
-//
-//    @RequestMapping(value = "removeBeer", method = RequestMethod.DELETE)
-//    public Beer removeBeerToInventory(@RequestBody Beer beer) {
-//
-//        return beerServiceImpl.removeBeerFromInventory(beer);
-//    }
-//
-//    @RequestMapping(value = "updateBeer", method = RequestMethod.POST)
-//    public Beer updateBeerToInventory(@RequestBody Beer beer) {
-//
-//        return beerServiceImpl.updateBeerInInventory(beer);
-//    }
+    @PostMapping(consumes = {"application/json"})
+    public Beer create(@RequestBody Beer beer) {
+        return beerService.addBeerToInventory(beer);
+    }
+
+    @PutMapping(value = "{beerId}", consumes = {"application/json"})
+    public Beer update(@RequestBody Beer beer, @PathVariable Integer beerId) {
+        beer.setId(beerId);
+        return beerService.updateBeerInInventory(beer);
+    }
+
+    @DeleteMapping(value = "{beerId)")
+    public void remove(@PathVariable Integer beerId) {
+        beerService.removeBeerFromInventory(beerId);
+    }
 
 }

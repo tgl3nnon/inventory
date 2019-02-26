@@ -18,7 +18,7 @@ public class Brewery {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "BREWERY_ID")
-    private Integer breweryId;
+    private Integer id;
 
     @Column(name = "BREWERY_NAME")
     private String breweryName;

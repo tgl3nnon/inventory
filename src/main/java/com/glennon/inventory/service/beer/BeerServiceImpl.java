@@ -31,9 +31,9 @@ public class BeerServiceImpl implements BeerService {
         return beerDao.addBeerToInventory(beer);
     }
 
-    public void removeBeerFromInventory(Beer beer) {
+    public void removeBeerFromInventory(Integer beerId) {
 
-        beerDao.removeBeerFromInventory(beer.getId());
+        beerDao.removeBeerFromInventory(beerId);
     }
 
     public Beer updateBeerInInventory(Beer beer) {

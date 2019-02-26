@@ -8,11 +8,11 @@ public interface BreweryService {
 
     public Collection<Brewery> getAllBreweries();
 
-    public Brewery getBrewery(Brewery Brewery);
+    public Brewery getBrewery(Integer breweryId);
 
     public Brewery addBreweryToInventory(Brewery Brewery);
 
-    public Brewery removeBreweryFromInventory(Brewery Brewery);
+    public void removeBreweryFromInventory(Integer breweryId);
 
     public Brewery updateBreweryInInventory(Brewery Brewery);
 }

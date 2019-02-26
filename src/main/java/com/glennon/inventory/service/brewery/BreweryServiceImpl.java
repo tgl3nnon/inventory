@@ -1,9 +1,11 @@
 package com.glennon.inventory.service.brewery;
 
 import com.glennon.inventory.model.Brewery;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+@Service
 public class BreweryServiceImpl implements  BreweryService{
 
     @Override
@@ -12,7 +14,7 @@ public class BreweryServiceImpl implements  BreweryService{
     }
 
     @Override
-    public Brewery getBrewery(Brewery Brewery) {
+    public Brewery getBrewery(Integer breweryId) {
         return null;
     }
 
@@ -22,8 +24,8 @@ public class BreweryServiceImpl implements  BreweryService{
     }
 
     @Override
-    public Brewery removeBreweryFromInventory(Brewery Brewery) {
-        return null;
+    public void removeBreweryFromInventory(Integer breweryId) {
+
     }
 
     @Override

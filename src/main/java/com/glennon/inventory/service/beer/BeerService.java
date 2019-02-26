@@ -12,7 +12,7 @@ public interface BeerService {
 
     public Beer addBeerToInventory(Beer beer);
 
-    public void removeBeerFromInventory(Beer beer);
+    public void removeBeerFromInventory(Integer beerId);
 
     public Beer updateBeerInInventory(Beer beer);
 }

@@ -1,4 +1,3 @@
-
 package com.glennon.inventory.dao.beer;
 
 import com.glennon.inventory.model.Beer;
