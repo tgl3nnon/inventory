@@ -44,7 +44,7 @@ public class BreweryController {
         return breweryService.updateBreweryInInventory(brewery);
     }
 
-    @DeleteMapping(value = "{breweryId)")
+    @DeleteMapping(value = "{breweryId}")
     public void remove(@PathVariable Integer breweryId) {
         breweryService.removeBreweryFromInventory(breweryId);
     }
