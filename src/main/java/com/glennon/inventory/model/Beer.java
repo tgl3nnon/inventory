@@ -25,7 +25,7 @@ public class Beer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "BEER_ID")
+    @Column(name = "BEER_ID", nullable = false, unique = true)
     private Integer id;
 
     @Column(name = "BEER_NAME")

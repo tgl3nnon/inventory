@@ -32,7 +32,7 @@ public class BeerDaoDbImpl implements BeerDao {
 
     @Override
     public Beer updateBeerInInventory(Beer beer) {
-        beerRepository.getOne(beer.getId());
+        //TODO check ID if exists
         return beerRepository.save(beer);
     }
 

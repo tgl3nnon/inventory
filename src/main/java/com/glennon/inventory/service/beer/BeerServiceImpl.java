@@ -27,7 +27,6 @@ public class BeerServiceImpl implements BeerService {
     }
 
     public Beer addBeerToInventory(Beer beer) {
-
         return beerDao.addBeerToInventory(beer);
     }
 
