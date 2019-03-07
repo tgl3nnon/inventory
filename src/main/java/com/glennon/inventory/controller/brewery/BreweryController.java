@@ -49,6 +49,4 @@ public class BreweryController {
         breweryService.removeBreweryFromInventory(breweryId);
     }
 
-    //TODO get all beers for a brewery
-
 }

@@ -40,4 +40,9 @@ public class BeerDaoDbImpl implements BeerDao {
     public Beer getBeer(Integer beerId) {
         return beerRepository.getOne(beerId);
     }
+
+    @Override
+    public Collection<Beer> getBeersInBrewery(Integer breweryId) {
+        return beerRepository.getBeersInBrewery(breweryId);
+    }
 }

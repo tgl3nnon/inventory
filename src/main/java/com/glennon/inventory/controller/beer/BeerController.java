@@ -49,4 +49,9 @@ public class BeerController {
         beerService.removeBeerFromInventory(beerId);
     }
 
+    @GetMapping(value = "/brewery/{breweryId}")
+    public Collection<Beer> getBeersInBrewery(@PathVariable Integer breweryId) {
+        return beerService.getBeersInBrewery(breweryId);
+    }
+
 }

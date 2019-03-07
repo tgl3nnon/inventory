@@ -16,4 +16,5 @@ public interface BeerDao {
 
     Beer getBeer(Integer beerId);
 
+    Collection<Beer> getBeersInBrewery(Integer breweryId);
 }

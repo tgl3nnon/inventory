@@ -40,4 +40,8 @@ public class BeerServiceImpl implements BeerService {
         return beerDao.updateBeerInInventory(beer);
     }
 
+    @Override
+    public Collection<Beer> getBeersInBrewery(Integer breweryId) {
+        return beerDao.getBeersInBrewery(breweryId);
+    }
 }

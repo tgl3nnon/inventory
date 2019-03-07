@@ -15,4 +15,6 @@ public interface BeerService {
     public void removeBeerFromInventory(Integer beerId);
 
     public Beer updateBeerInInventory(Beer beer);
+
+    public Collection<Beer> getBeersInBrewery(Integer breweryId);
 }
