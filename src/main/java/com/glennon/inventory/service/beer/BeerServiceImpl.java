@@ -31,12 +31,10 @@ public class BeerServiceImpl implements BeerService {
     }
 
     public void removeBeerFromInventory(Integer beerId) {
-
         beerDao.removeBeerFromInventory(beerId);
     }
 
     public Beer updateBeerInInventory(Beer beer) {
-
         return beerDao.updateBeerInInventory(beer);
     }
 
